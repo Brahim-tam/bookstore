@@ -51,7 +51,7 @@
                     {{ __('site.already_regestered') }}
                 </a>
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="mr-4">
                     {{ __('site.register') }}
                 </x-jet-button>
             </div>
