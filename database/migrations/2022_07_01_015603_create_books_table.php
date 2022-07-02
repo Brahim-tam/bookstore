@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('publisher_id')->nullable();
             $table->string('title');
             $table->string('ispn')->nullable();
             $table->text('description')->nullable();
@@ -25,8 +23,18 @@ return new class extends Migration
             $table->unsignedInteger('number_of_copies');
             $table->decimal('price' , 8 , 2 );
             $table->string('cover_image');
-            $table->timestamps();
-        });
+      
+
+            
+            $table->foreignId('publisher_id')->nullable()
+                ->constrained('publishers')
+                ->nullOnDelete();      
+            $table->foreignId('category_id')->nullable()
+                  ->constrained('categories')
+                  ->onDelete('set null');
+             $table->timestamps();
+    
+                });
     }
 
     /**
