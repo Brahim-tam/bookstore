@@ -24,15 +24,14 @@ return new class extends Migration
             $table->decimal('price' , 8 , 2 );
             $table->string('cover_image');
       
-
-            
+            // forigen keys
             $table->foreignId('publisher_id')->nullable()
                 ->constrained('publishers')
                 ->nullOnDelete();      
             $table->foreignId('category_id')->nullable()
                   ->constrained('categories')
                   ->onDelete('set null');
-             $table->timestamps();
+            $table->timestamps();
     
                 });
     }
